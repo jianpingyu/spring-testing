@@ -51,11 +51,11 @@ public class ExampleControllerAPITest {
 
     @Test
     public void shouldReturnCurrentWeather() throws Exception {
-        WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
+        WeatherResponse weatherResponse = new WeatherResponse("NanJing, 8°C raining");
         given(weatherClient.fetchWeather()).willReturn(Optional.of(weatherResponse));
 
         mockMvc.perform(get("/weather"))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(content().string("Hamburg, 8°C raining"));
+                .andExpect(content().string("NanJing, 8°C raining"));
     }
 }

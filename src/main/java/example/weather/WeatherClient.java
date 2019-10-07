@@ -35,7 +35,7 @@ public class WeatherClient {
             CnWeatherResponse cnResponse = restTemplate.getForObject(url, CnWeatherResponse.class);
             if (cnResponse != null && cnResponse.getWeatherinfo() != null) {
                 CnWeatherResponse.Info info = cnResponse.getWeatherinfo();
-                String summary = String.format("%s %s 温度: %s, 湿度: %s, 风力: %s", info.getCity(), info.getTime(), info.getTemp(), info.getSD(), info.getWS());
+                String summary = String.format("%s", info.getTemp());
                 response = new WeatherResponse(summary);
             }
             return Optional.ofNullable(response);

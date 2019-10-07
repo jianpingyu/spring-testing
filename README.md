@@ -13,17 +13,8 @@ This repository is part of a [series of blog posts](http://www.hamvocke.com/blog
 
 ## Get started
 
-### 1. Set an API Key as Environment Variable
-In order to run the service, you need to set the `WEATHER_API_KEY` environment variable to a valid API key retrieved from [darksky.net](http://darksky.net).
-
-A simple way is to rename the `env.sample` file to `.env`, fill in your API key from `darksky.net` and source it before running your application:
-
-```bash
-source .env
-```
-
-### 2. Run the Application
-Once you've provided the API key and started a PostgreSQL database you can run the application using
+### Run the Application
+you can run the application using
 
 ```bash
 ./gradlew bootRun
@@ -36,7 +27,7 @@ The application will start on port `8080` so you can send a sample request to `h
 
 ```
  ╭┄┄┄┄┄┄┄╮      ┌──────────┐      ┌──────────┐
- ┆   ☁   ┆  ←→  │    ☕     │  ←→  │    💾     │
+ ┆   ☁   ┆  ←→ │    ☕     │  ←→  │    💾     │
  ┆  Web  ┆ HTTP │  Spring  │      │ Database │
  ╰┄┄┄┄┄┄┄╯      │  Service │      └──────────┘
                 └──────────┘
@@ -53,7 +44,7 @@ The sample application is almost as easy as it gets. It stores `Person`s in an i
 
   * `GET /hello`: Returns _"Hello World!"_. Always.
   * `GET /hello/{lastname}`: Looks up the person with `lastname` as its last name and returns _"Hello {Firstname} {Lastname}"_ if that person is found.
-  * `GET /weather`: Calls a downstream [weather API](https://darksky.net) via HTTP and returns a summary for the current weather conditions in Hamburg, Germany
+  * `GET /weather`: Calls a downstream [weather API](https://darksky.net) via HTTP and returns a summary for the current weather conditions in NanJing
 
 ### Internal Architecture
 The **Spring Service** itself has a pretty common internal architecture:
@@ -102,7 +93,7 @@ The next layer, integration tests, test all places where your application serial
 
 ```
  ╭┄┄┄┄┄┄┄╮      ┌──────────┐      ┌──────────┐
- ┆   ☁   ┆  ←→  │    ☕     │  ←→  │    💾     │
+ ┆   ☁   ┆  ←→ │    ☕     │  ←→  │    💾     │
  ┆  Web  ┆      │  Spring  │      │ Database │
  ╰┄┄┄┄┄┄┄╯      │  Service │      └──────────┘
                 └──────────┘
@@ -141,3 +132,5 @@ You can find lots of different tools, frameworks and libraries being used in the
   * **RestAssured**: testing the service end to end via HTTP
   * **Wiremock**: provide HTTP stubs for downstream services
 
+## 注意事项
+* 端到端测试需要本地安装chrome浏览器

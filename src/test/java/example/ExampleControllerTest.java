@@ -59,12 +59,12 @@ public class ExampleControllerTest {
 
     @Test
     public void shouldReturnWeatherClientResult() throws Exception {
-        WeatherResponse weatherResponse = new WeatherResponse("Hamburg, 8°C raining");
+        WeatherResponse weatherResponse = new WeatherResponse("NanJing, 8°C raining");
         given(weatherClient.fetchWeather()).willReturn(Optional.of(weatherResponse));
 
         String weather = subject.weather();
 
-        assertThat(weather, is("Hamburg, 8°C raining"));
+        assertThat(weather, is("NanJing, 8°C raining"));
     }
 
     @Test

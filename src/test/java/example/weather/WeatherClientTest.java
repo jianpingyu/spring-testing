@@ -31,9 +31,14 @@ public class WeatherClientTest {
 
     @Test
     public void shouldCallWeatherService() throws Exception {
-        WeatherResponse expectedResponse = new WeatherResponse("light rain");
-        given(restTemplate.getForObject("http://localhost:8089/101190101", WeatherResponse.class))
-                .willReturn(expectedResponse);
+        String summary = "light rain";
+        WeatherResponse expectedResponse = new WeatherResponse(summary);
+        CnWeatherResponse cnResponse = new CnWeatherResponse();
+        CnWeatherResponse.Info info = new CnWeatherResponse.Info();
+        info.setTemp(summary);
+        cnResponse.setWeatherinfo(info);
+        given(restTemplate.getForObject("http://localhost:8089/101190101.html", CnWeatherResponse.class))
+                .willReturn(cnResponse);
 
         Optional<WeatherResponse> actualResponse = subject.fetchWeather();
 
@@ -42,7 +47,7 @@ public class WeatherClientTest {
 
     @Test
     public void shouldReturnEmptyOptionalIfWeatherServiceIsUnavailable() throws Exception {
-        given(restTemplate.getForObject("http://localhost:8089/101190101", WeatherResponse.class))
+        given(restTemplate.getForObject("http://localhost:8089/101190101.html", CnWeatherResponse.class))
                 .willThrow(new RestClientException("something went wrong"));
 
         Optional<WeatherResponse> actualResponse = subject.fetchWeather();

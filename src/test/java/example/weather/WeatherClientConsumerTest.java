@@ -35,8 +35,8 @@ public class WeatherClientConsumerTest {
     public RequestResponsePact createPact(PactDslWithProvider builder) throws IOException {
         return builder
                 .given("weather forecast data")
-                .uponReceiving("a request for a weather request for Hamburg")
-                    .path("/some-test-api-key/53.5511,9.9937")
+                .uponReceiving("a request for a weather request for NanJing")
+                    .path("/101190101.html")
                     .method("GET")
                 .willRespondWith()
                     .status(200)
@@ -49,6 +49,6 @@ public class WeatherClientConsumerTest {
     public void shouldFetchWeatherInformation() throws Exception {
         Optional<WeatherResponse> weatherResponse = weatherClient.fetchWeather();
         assertThat(weatherResponse.isPresent(), is(true));
-        assertThat(weatherResponse.get().getSummary(), is("Rain"));
+        assertThat(weatherResponse.get().getSummary(), is("21.9"));
     }
 }

@@ -29,7 +29,7 @@ public class WeatherAcceptanceTest {
 
     @Test
     public void shouldReturnYesterdaysWeather() throws Exception {
-        wireMockRule.stubFor(get(urlPathEqualTo("/some-test-api-key/53.5511,9.9937"))
+        wireMockRule.stubFor(get(urlPathEqualTo("/101190101.html"))
                 .willReturn(aResponse()
                         .withBody(FileLoader.read("classpath:weatherApiResponse.json"))
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -39,6 +39,6 @@ public class WeatherAcceptanceTest {
                 .get(String.format("http://localhost:%s/weather", port))
                 .then()
                 .statusCode(is(200))
-                .body(containsString("Rain"));
+                .body(containsString("21.9"));
     }
 }

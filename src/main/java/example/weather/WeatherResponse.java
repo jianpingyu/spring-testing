@@ -1,8 +1,10 @@
 package example.weather;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class WeatherResponse {
     private WeatherInfo weatherInfo;
 
@@ -37,6 +39,7 @@ public class WeatherResponse {
     }
 
     @Data
+    @NoArgsConstructor
     public static class WeatherInfo {
         private String summary;
 

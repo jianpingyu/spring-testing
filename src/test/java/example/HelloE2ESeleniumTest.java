@@ -28,7 +28,7 @@ public class HelloE2ESeleniumTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        WebDriverManager.chromedriver().version("73").setup();
+        WebDriverManager.chromedriver().version("77").setup();
     }
 
     @Before
